@@ -11,17 +11,13 @@ const ExcerciseSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+        //required: true
     },
-    muscleGroup: {
-        type: String,
-        required: true,
-        enum: ["chest",
-            "back",
-            "arms",
-            "abdominals",
-            "legs",
-            "shoulders"]
+    muscleGroupId: {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Muscle',
+        //enum:['Afiliate','Trainer'],
+        required:true,
     },
     series:{
         type:Number,

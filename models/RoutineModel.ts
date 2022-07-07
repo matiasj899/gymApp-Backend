@@ -1,16 +1,39 @@
 import mongoose from "mongoose"
 
 const RoutineSchema= new mongoose.Schema({
-   objetive:{
-    type:String,
-    required:true,
-    enum:["Lose weight","Mantein weigth","Gain muscle"]
-   },
-   trainingLevel:{
-    type:String,
-    required:true,
-    enum:['Starter',"Intermediate","Advanced"]
-   },
+   objective: { type:mongoose.Schema.Types.ObjectId,
+      ref:'Objective',
+   
+      required:true,
+},
+   trainingLevel:{ type:mongoose.Schema.Types.ObjectId,
+      ref:'TrainingLevel',
+   
+      required:true,
+},
+   trainingDays:[
+      {
+         day:[
+           { type:mongoose.Schema.Types.ObjectId,
+            ref:'Days',
+         
+            required:true,
+   },{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Excercise',
+   
+      required:true,
+      
+   }
+      ]
+        
+      },
+      
+   ]
+     
+   
+     
+   
 
    })
   

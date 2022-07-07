@@ -1,13 +1,14 @@
 import express from "express";
+import { createRoutine, getRoutineById, getRoutines } from '../services/RoutinesServices';
 
-const routinesRoutes=express.Router();
+const routinesRouter=express.Router();
 
-routinesRoutes.post('/', (req, res) => {
+routinesRouter.post('/', (req, res) => {
   
-    const newUser:Object=req.body
-    const newUserBodyHasData:Boolean=Object.keys(newUser).length>0?true:false
-    if(newUserBodyHasData){
-      createUser(newUser).then((data) => {
+    const newRoutine:Object=req.body
+    const newRoutineBodyHasData:Boolean=Object.keys(newRoutine).length>0?true:false
+    if(newRoutineBodyHasData){
+      createRoutine(newRoutine).then((data) => {
         res.status(200)
     
         res.send(data)
@@ -24,8 +25,8 @@ routinesRoutes.post('/', (req, res) => {
   
   });
   
-  routinesRoutes.get('/', (_req, res) => {
-    getUsers().then((data) => {
+  routinesRouter.get('/', (_req, res) => {
+    getRoutines().then((data) => {
       res.status(200)
   
       res.send(data)
@@ -33,10 +34,10 @@ routinesRoutes.post('/', (req, res) => {
   
   });
   
-  routinesRoutes.get('/:id', (req, res) => {
+  routinesRouter.get('/:id', (req, res) => {
   
-    const userId = req.params.id
-    getUserById(userId).then((data) => {
+    const routineId = req.params.id
+    getRoutineById(routineId).then((data) => {
       res.status(200)
       res.send(data)
     }).catch((err) => {
@@ -47,4 +48,4 @@ routinesRoutes.post('/', (req, res) => {
   
   });
   
-  export default routinesRoutes
+  export default routinesRouter

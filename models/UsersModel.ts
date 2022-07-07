@@ -14,24 +14,24 @@ const userSchema= new mongoose.Schema({
     },
     profilePic:{
         type:String,
-        //required:true,
+        required:true,
     },
     age:{
         type:Number,
-        //required:true
+        required:true
     },
     gender:{
         type:String,
         enum:["Male","Female","Undefined"],
-        ////required:true
+        required:true
     },
     email:{
         type:String,
-        //required:true
+     required:true
     },
     phoneNumber:{
         type:Number,
-        //required:true,
+      required:true,
     },
     routineId:{
         type:mongoose.Schema.Types.ObjectId,

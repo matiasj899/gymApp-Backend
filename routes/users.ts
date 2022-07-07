@@ -34,6 +34,7 @@ usersRouter.get('/', (_req, res) => {
 
 });
 
+
 usersRouter.get('/:id', (req, res) => {
 
   const userId = req.params.id

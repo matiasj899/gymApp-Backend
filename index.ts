@@ -1,11 +1,9 @@
-// const express = require("express");
-// const cors = require("cors");
-// const connectDB=require('./mongo')
-// const { User } = require("./models/UsersModel");
 import express from 'express'
 import cors from 'cors'
 import connectDB from './mongo';
-import User from './models/UsersModel';
+import usersRouter from './routes/users';
+import rolesRouter from './routes/roles';
+
 
 
 connectDB();
@@ -15,10 +13,9 @@ app.use(cors());
 app.use(express.json());
 const port = 3000;
 
-app.get("/api/users", (_req, res) => {
-  User.find().then((userData) => res.send(userData));
-});
+app.use('/api/users',usersRouter);
+app.use('/api/roles',rolesRouter)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Escuchando el puerto:${port}`);
 });

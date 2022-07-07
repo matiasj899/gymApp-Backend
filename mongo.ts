@@ -1,4 +1,3 @@
-//const mongoose = require("mongoose");
 import mongoose from "mongoose";
 const connectionString =
   "mongodb+srv://matiasj899:matias123@cluster0.obbymxr.mongodb.net/gymAppDB";

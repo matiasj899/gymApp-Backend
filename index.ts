@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import 'dotenv/config'
 import connectDB from './mongo';
 import usersRouter from './routes/users';
 import rolesRouter from './routes/roles';
@@ -9,6 +10,7 @@ import ExcercisesRouter from './routes/Excercise';
 import routinesRouter from './routes/routines';
 import trainingLevelRouter from './routes/trainingLevel';
 import objectivesRouter from './routes/objectives';
+import loginRouter from './routes/login';
 
 
 
@@ -27,6 +29,7 @@ app.use('/api/excercises',ExcercisesRouter)
 app.use('/api/routines',routinesRouter)
 app.use('/api/trainingLevels',trainingLevelRouter)
 app.use('/api/objectives',objectivesRouter)
+app.use('/api/login',loginRouter)
 
 app.listen(port, () => {
   console.log(`Escuchando el puerto:${port}`);

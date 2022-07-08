@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const UserServices_1 = require("../services/UserServices");
-const usersRouter = express_1.default.Router();
-usersRouter.post('/', (req, res) => {
-    const newUser = req.body;
-    const newUserBodyHasData = Object.keys(newUser).length > 0 ? true : false;
-    if (newUserBodyHasData) {
-        (0, UserServices_1.createUser)(newUser).then((data) => {
+const RoutinesServices_1 = require("../services/RoutinesServices");
+const routinesRouter = express_1.default.Router();
+routinesRouter.post('/', (req, res) => {
+    const newRoutine = req.body;
+    const newRoutineBodyHasData = Object.keys(newRoutine).length > 0 ? true : false;
+    if (newRoutineBodyHasData) {
+        (0, RoutinesServices_1.createRoutine)(newRoutine).then((data) => {
             res.status(200);
             res.send(data);
         }).catch((err) => {
@@ -24,15 +24,15 @@ usersRouter.post('/', (req, res) => {
         res.send({ error: 'Invalid data' });
     }
 });
-usersRouter.get('/', (_req, res) => {
-    (0, UserServices_1.getUsers)().then((data) => {
+routinesRouter.get('/', (_req, res) => {
+    (0, RoutinesServices_1.getRoutines)().then((data) => {
         res.status(200);
         res.send(data);
     });
 });
-usersRouter.get('/:id', (req, res) => {
-    const userId = req.params.id;
-    (0, UserServices_1.getUserById)(userId).then((data) => {
+routinesRouter.get('/:id', (req, res) => {
+    const routineId = req.params.id;
+    (0, RoutinesServices_1.getRoutineById)(routineId).then((data) => {
         res.status(200);
         res.send(data);
     }).catch((err) => {
@@ -41,4 +41,4 @@ usersRouter.get('/:id', (req, res) => {
         res.send({ error: 'No existe un usuario con este id' });
     });
 });
-exports.default = usersRouter;
+exports.default = routinesRouter;

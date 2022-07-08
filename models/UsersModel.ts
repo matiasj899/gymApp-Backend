@@ -27,7 +27,8 @@ const userSchema= new mongoose.Schema({
     },
     email:{
         type:String,
-     required:true
+     required:true,
+     unique:true
     },
     phoneNumber:{
         type:Number,
@@ -38,6 +39,11 @@ const userSchema= new mongoose.Schema({
         ref:'Routine',
         //enum:['Afiliate','Trainer'],
         //required:true,
+    },
+    password:{
+        type:String,
+        required:true,
+        select:false
     }
    })
   

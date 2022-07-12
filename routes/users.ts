@@ -1,6 +1,9 @@
 import express from "express";
 import { getUsers, getUserById,createUser } from "../services/UserServices";
 
+import 'dotenv/config'
+//import { authorization } from "../middleware/Authorization";
+//import { checkRol } from "../middleware/checkRol";
 const usersRouter = express.Router();
 
 usersRouter.post('/', (req, res) => {
@@ -26,6 +29,8 @@ usersRouter.post('/', (req, res) => {
 });
 
 usersRouter.get('/', (_req, res) => {
+ 
+
   getUsers().then((data) => {
     res.status(200)
 

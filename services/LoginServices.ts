@@ -5,8 +5,9 @@ import 'dotenv/config'
 
 const generateToken = (userExists: any) => {
     const secret:any=process.env.SECRET
-    const { email, _id, role, userName, lastName } = userExists
-    const token = jwt.sign({ email, _id, role, userName, lastName }, secret)
+    console.log(userExists)
+    const { email, _id, roleId, userName, lastName } = userExists
+    const token = jwt.sign({ email, _id, roleId, userName, lastName }, secret)
     return token
 }
 
@@ -24,7 +25,8 @@ const checkPasswordValidity = async (userData: any, userExists: any) => {
 
 export const logUser = async (userData: any) => {
 
-    const userExists = await User.findOne({ email: userData.email }).select('+password')
+    const userExists = await User.findOne({ email: userData.email }).select('+password').populate({
+        path:"roleId"})
     if (userExists) {
         const result = await checkPasswordValidity(userData, userExists)
         return result

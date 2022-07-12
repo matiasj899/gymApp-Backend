@@ -11,6 +11,8 @@ import routinesRouter from './routes/routines';
 import trainingLevelRouter from './routes/trainingLevel';
 import objectivesRouter from './routes/objectives';
 import loginRouter from './routes/login';
+import { authorization } from './middleware/Authorization';
+import { checkRol } from './middleware/checkRol';
 
 
 
@@ -21,7 +23,7 @@ app.use(cors());
 app.use(express.json());
 const port = 3000;
 
-app.use('/api/users',usersRouter);
+app.use('/api/users',authorization,checkRol,usersRouter);
 app.use('/api/roles',rolesRouter)
 app.use('/api/musclesgroups',musclesGroupsRouter)
 app.use('/api/days',daysRouter)

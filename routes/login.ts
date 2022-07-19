@@ -14,13 +14,13 @@ loginRouter.post('/',(req,res)=>{
     
         res.send(data)
       }).catch((err) => {
-        console.log('aca')
+  
         console.error(err)
-        res.status(400)
+        res.status(401)
         res.send({ error: 'Email or password are incorrect' })
       })
     }else{
-      res.status(400)
+      res.status(401)
       res.send({ error: 'Email or password are incorrect' })
     }
     })

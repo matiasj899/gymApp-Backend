@@ -1,18 +1,79 @@
 import mongoose from "mongoose";
 
 const DaysSchema= new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        enum:['dayOne','dayTwo','dayThree','dayFour','dayFive','daySix'],
-        unique:true
-    },
-    excercises:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Excercise',
-     
-        required:true,
-    }]
+    dayOne: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+    dayTwo: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+    dayThree: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+    dayFour: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+    dayFive: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+    daySix: [
+        {
+            lang: {
+                type: String,
+                required: true,
+            },
+            value: {
+                type: String,
+                required: true
+            }
+        }
+    ],
+
        
     
 })

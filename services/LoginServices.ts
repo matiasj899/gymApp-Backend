@@ -17,7 +17,7 @@ const checkPasswordValidity = async (userData: any, userExists: any) => {
 
         const token = generateToken(userExists)
    
-        return { msg: "Logged succesfully", token }
+        return { msg: "Logged succesfully",userExists, token }
     } else {
         throw new Error("email or password are incorrect");
     }
